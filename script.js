@@ -1,7 +1,6 @@
 $(document).ready(function() {
-  var mouse_in = false;
-$('.pacman').on('mouseenter', function() {
-  $('.body').css({'animation':'go 10s linear forwards'});
+  $('.pacman').on('mouseenter', function() {
+  $('.body').css({'animation':'go 10s linear'});
   $('.food1').css({'animation': 'fadeout 0s 0.7s forwards'});
   $('.food2').css({'animation': 'fadeout 0s 1.5s forwards'});
   $('.food3').css({'animation': 'fadeout 0s 2.5s forwards'});
