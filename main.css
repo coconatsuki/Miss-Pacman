@@ -8,17 +8,18 @@ div div {
   position: relative;
 }
 .pacman {
-  width: 600px;
+  width: 1000px;
   height: 250px;
   background-color: #222;
   margin: 200px auto;
     }
 .body {
   height: 250px;
+  width: 800px;
 }
 .headbottom, .headtop {
   background: yellow;
-  z-index: 1;
+  z-index: 2;
   margin-left: 20px;
   top: -60px;
   }
@@ -26,6 +27,8 @@ div div {
   width: 200px;
   height: 100px;
   top: 140px;
+  margin-top: 200px;
+  animation: eatdown 1s linear infinite;
 
   transform: rotate(20deg);
 
@@ -36,7 +39,9 @@ div div {
   .headtop {
     width: 200px;
     height: 100px;
+    margin-bottom: 200px;
       transform: rotate(-20deg);
+      animation: eatup 1s linear infinite;
 
     border-radius: 100px 100px 0 0;
   -moz-border-radius: 100px 100px 0 0;
@@ -47,7 +52,7 @@ div div {
       position: absolute;
       width: 15px;
       height: 30px;
-      z-index: 2;
+      z-index: 3;
       top: 50px;
       right: 90px;
 
@@ -58,6 +63,7 @@ div div {
     .lipstickup {
       background-color: red;
       position: absolute;
+      z-index: 3;
       width: 30px;
       height: 15px;
       right: 0;
@@ -70,6 +76,7 @@ div div {
     .lipstickdown {
       background-color: red;
       position: absolute;
+      z-index: 3;
       width: 30px;
       height: 15px;
       right: 0;
@@ -113,16 +120,76 @@ div div {
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
     }
-    @keyframes eat {
+    .lipstickup {
+      background-color: red;
+      position: absolute;
+      width: 30px;
+      height: 15px;
+      right: 0;
+      bottom: 0;
+
+      border-radius: 15px 100px 0 0;
+    -moz-border-radius: 15px 15px 0 0;
+    -webkit-border-radius: 15px 15px 0 0;
+    }
+    .food1, .food2, .food3, .food4 {
+      background-color: white;
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      z-index: 1;
+      visibility: visible;
+      opacity: 1;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    }
+    .food1 {
+      top: -125px;
+      left: 900px;
+      }
+    .food2 {
+      top: -125px;
+      left: 700px;
+    }
+    .food3 {
+      top: -125px;
+      left: 500px;
+    }
+    .food4 {
+      top: -125px;
+      left: 300px;
+      animation: fadeout 0s 0.5s;
+    }
+
+    .body:hover {
+      animation: go 10s ease-out infinite forwards;
+    }
+
+/*Animations*/
+
+    @keyframes eatup {
       0% {transform: rotate(-20deg);}
-      50% {transform: rotate(100deg);}
+      50% {transform: rotate(0deg);}
       100% {transform: rotate(-20deg)}
+    }
+    @keyframes eatdown {
+      0% {transform: rotate(20deg);}
+      50% {transform: rotate(-0deg);}
+      100% {transform: rotate(20deg)}
     }
     @keyframes go {
       0% {transform: translate(0, 0));}
-      100% {transform: translate(300px, 0);}
+      50% {transform: translate(750px, 0);}
+      100% {transform: translate(0, 0));}
       }
-.body:hover {
-    animation: eat 0.2s 0s infinite ease;
-    animation: go 10s 0s ease forwards;
-}
+    @keyframes fadeout {
+      from {
+        visibility: visible;;
+        opacity: 1;
+      }
+      to {
+        visibility:hidden;
+        opacity: 0;
+      }
+    }
